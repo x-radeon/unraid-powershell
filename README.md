@@ -8,3 +8,5 @@ The install is performed, basically, exactly as described here: https://docs.mic
 It probably needs some improvement.
 
 Version will be lock step with the PowerShell stable version
+
+To use PowerShell after install, type `pwsh` at a terminal or call `pwsh` in a bash script (when using 'User Scripts" for example).
