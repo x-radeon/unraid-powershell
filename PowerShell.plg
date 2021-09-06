@@ -22,26 +22,23 @@
 
 <FILE Run="/bin/bash">
 <INLINE>
+echo "Removing Old Install"
 rm -rf /usr/bin/pwsh /opt/microsoft/powershell
+echo "Creating Directory"
 mkdir -p /opt/microsoft/powershell/7
-</INLINE>
-</FILE>
-
-<FILE Name="&plugin;/powershell-&version;-linux-x64.tar.gz" Run="tar zxf &plugin;/powershell-&version;-linux-x64.tar.gz -C /opt/microsoft/powershell/7">
-<URL>https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz</URL>
-<MD5>&md5;</MD5>
-</FILE>
-
-
-<FILE Run="/bin/bash">
-<INLINE>
-# Set execute permissions
+echo "Downloading Source"
+curl -L -o &plugin;/powershell-&version;-linux-x64.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz
+#echo "Verify MD5"
+#md5sum &plugin;/powershell-&version;-linux-x64.tar.gz -c
+echo "Untar files"
+tar zxf &plugin;/powershell-&version;-linux-x64.tar.gz -C /opt/microsoft/powershell/7
+echo "Set execute permissions"
 chmod +x /opt/microsoft/powershell/7/pwsh
-# Create the symbolic link that points to pwsh
+echo "Create the symbolic link that points to pwsh"
 ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+echo "Finished"
 </INLINE>
 </FILE>
-
 
 <FILE Name="&plugdir;/README.md">
 <INLINE>
