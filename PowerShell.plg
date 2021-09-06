@@ -1,1 +1,71 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "PowerShell">
+<!ENTITY author    "x-radeon">
+<!ENTITY version   "7.1.4">
+<!ENTITY md5       "b93c20b57a573007011104d3c0608243">
+<!ENTITY launch    "Settings/&name;">
+<!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
+<!ENTITY plugin    "/boot/config/plugins/&name;">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/x-radeon/unraid-powershell/main/PowerShell.plg">
+]>
 
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.9.2" support="https://forums.unraid.net/topic/TBD">
+
+<CHANGES>
+
+###2021.09.06
+- Initial Release
+- PowerShell Version 7.1.4
+
+</CHANGES>
+
+<FILE Run="/bin/bash">
+<INLINE>
+rm -rf /usr/bin/pwsh /opt/microsoft/powershell
+mkdir /opt/microsoft/powershell/7
+</INLINE>
+</FILE>
+
+<FILE Name="&plugin;/powershell-&version;-linux-x64.tar.gz" Run="tar zxf &plugin;/powershell-&version;-linux-x64.tar.gz -C /opt/microsoft/powershell/7">
+<URL>https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz</URL>
+<MD5>&md5;</MD5>
+</FILE>
+
+
+<FILE Run="/bin/bash">
+<INLINE>
+# Set execute permissions
+chmod +x /opt/microsoft/powershell/7/pwsh
+# Create the symbolic link that points to pwsh
+ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+</INLINE>
+</FILE>
+
+
+<FILE Name="&plugdir;/README.md">
+<INLINE>
+**PowerShell**
+
+This Plugin allows you to install Microsoft PowerShell.
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+echo "------------------------------------"
+echo "---Uninstalling PowerShell plugin---"
+echo "------------------------------------"
+echo
+# Remove plugin related files
+rm -rf /usr/bin/pwsh /opt/microsoft/powershell
+rm -rf &plugin;
+rm -rf &plugdir;
+echo
+echo "--------------------------------------------------------"
+echo "--------------PowerShell uninstalled--------------------"
+echo "--------------------------------------------------------"
+echo
+</INLINE>
+</FILE>
+</PLUGIN>
