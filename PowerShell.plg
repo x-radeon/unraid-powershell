@@ -23,7 +23,7 @@
 <FILE Run="/bin/bash">
 <INLINE>
 rm -rf /usr/bin/pwsh /opt/microsoft/powershell
-mkdir /opt/microsoft/powershell/7
+mkdir -p /opt/microsoft/powershell/7
 </INLINE>
 </FILE>
 
