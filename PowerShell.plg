@@ -27,7 +27,7 @@ rm -rf /usr/bin/pwsh /opt/microsoft/powershell
 echo "Creating Directory"
 mkdir -p /opt/microsoft/powershell/7
 echo "Downloading Source https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz"
-curl -L -o &plugin;/powershell-&version;-linux-x64.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz
+curl -L -o &plugin;/powershell-7.1.4-linux-x64.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v7.1.4/powershell-7.1.4-linux-x64.tar.gz
 #echo "Verify MD5"
 #md5sum &plugin;/powershell-&version;-linux-x64.tar.gz -c
 echo "Untar files"
