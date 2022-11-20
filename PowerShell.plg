@@ -24,22 +24,39 @@
 
 <FILE Run="/bin/bash">
 <INLINE>
+checksumverified=0
 echo "Removing Old Install"
 rm -rf /usr/bin/pwsh /opt/microsoft/powershell
 echo "Creating Directory"
 mkdir -p /opt/microsoft/powershell/7
-mkdir -p /boot/config/plugins/&name;
-echo "Downloading Source https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz"
-curl -L -o &plugin;/powershell-&version;-linux-x64.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz
-#echo "Verify MD5"
-#md5sum &plugin;/powershell-&version;-linux-x64.tar.gz -c
-echo "Untar files"
-tar zxf &plugin;/powershell-&version;-linux-x64.tar.gz -C /opt/microsoft/powershell/7
-echo "Set execute permissions"
-chmod +x /opt/microsoft/powershell/7/pwsh
-echo "Create the symbolic link that points to pwsh"
-ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
-echo "Finished"
+if [ ! -d /boot/config/plugins/PowerShell ]
+then
+  mkdir -p /boot/config/plugins/&name;
+fi
+if echo "4f2560857cec6c795f9940407d9f154d3c01cd6ba52e1656e3f2a5b60e5ff1b0  /boot/config/plugins/PowerShell/powershell-7.2.7-linux-x64.tar.gz" | sha256sum -c
+then
+  echo "Using already downloaded file"
+  checksumverified=1
+else
+  echo "Downloading Source https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz"
+  curl -L -o &plugin;/powershell-&version;-linux-x64.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz
+  if echo "4f2560857cec6c795f9940407d9f154d3c01cd6ba52e1656e3f2a5b60e5ff1b0  /boot/config/plugins/PowerShell/powershell-7.2.7-linux-x64.tar.gz" | sha256sum -c
+  then
+    checksumverified=1
+  fi
+fi
+if $checksumverified
+then
+  echo "Untar files"
+  tar zxf &plugin;/powershell-&version;-linux-x64.tar.gz -C /opt/microsoft/powershell/7
+  echo "Set execute permissions"
+  chmod +x /opt/microsoft/powershell/7/pwsh
+  echo "Create the symbolic link that points to pwsh"
+  ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+  echo "Finished"
+else
+  echo "Failed to verify checksum!!!"
+fi
 </INLINE>
 </FILE>
 
