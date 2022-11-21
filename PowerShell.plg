@@ -27,6 +27,7 @@
 checksumverified=false
 echo "Removing Old Install"
 rm -rf /usr/bin/pwsh /opt/microsoft/powershell
+find /boot/config/plugins/PowerShell -type f ! -iname powershell-&version;-linux-x64.tar.gz -delete
 echo "Creating Directory"
 mkdir -p /opt/microsoft/powershell/7
 if [ ! -d /boot/config/plugins/PowerShell ]
