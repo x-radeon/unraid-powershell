@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "PowerShell">
 <!ENTITY author    "x-radeon">
-<!ENTITY version   "7.2.7">
+<!ENTITY version   "7.3.2">
 <!ENTITY sha256    "4f2560857cec6c795f9940407d9f154d3c01cd6ba52e1656e3f2a5b60e5ff1b0">
 <!ENTITY launch    "Settings/&name;">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
