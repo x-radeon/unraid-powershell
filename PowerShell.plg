@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "PowerShell">
 <!ENTITY author    "x-radeon">
-<!ENTITY version   "7.3.2">
+<!ENTITY version   "7.3.3">
 <!ENTITY sha256    "77700FF7160F77909EA5DCCEA0340CAEB876F6E12D92D21C5FD7A79FCF377D1A">
 <!ENTITY launch    "Settings/&name;">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
@@ -13,6 +13,8 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.9.2" support="https://forums.unraid.net/topic/TBD">
 
 <CHANGES>
+###2023-03-04
+- PowerShell Version 7.3.3 (https://github.com/PowerShell/PowerShell/releases/tag/v7.3.3)
 ###2023-02-05
 - PowerShell Version 7.3.2 (https://github.com/PowerShell/PowerShell/releases/tag/v7.3.2)
 
