@@ -3,7 +3,7 @@
 <!ENTITY name      "PowerShell">
 <!ENTITY author    "x-radeon">
 <!ENTITY version   "7.3.3">
-<!ENTITY sha256    "77700FF7160F77909EA5DCCEA0340CAEB876F6E12D92D21C5FD7A79FCF377D1A">
+<!ENTITY sha256    "478320F62C9BEC5765414B82B4086310777BF95AB2FC2310B2DB6CBC253B40B4">
 <!ENTITY launch    "Settings/&name;">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
 <!ENTITY plugin    "/boot/config/plugins/&name;">
