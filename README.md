@@ -22,7 +22,7 @@ pwsh /boot/config/plugins/myscripts/script.ps1
 4. Add info in the <CHANGES> section (line 15) simliar to previous changes
 
 ### Known PowerShell Issues With Linux That Might Impact You
-- There is a known issue where PowerShell converts STDOUT to a string instead of leaving it as a byte stream, this means commands like the following do NOT working currently:
+- There is a known issue where PowerShell converts STDOUT to a string instead of leaving it as a byte stream, this means commands like the following do NOT work currently:
 ```
 btrfs send -p $PreviousSnapshot $CurrentSnapshot | btrfs receive $DestinationDirectory
 ```
