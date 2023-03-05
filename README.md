@@ -13,3 +13,17 @@ To use PowerShell after install, type `pwsh` at a terminal or call `pwsh`  in a 
 #!/bin/bash
 pwsh /boot/config/plugins/myscripts/script.ps1
 ```
+
+## Steps To Increment Plugin Version
+1. View PowerShell versions at https://github.com/PowerShell/powershell/releases
+2. Change version (line 5) to new version
+3. Update SHA256 hash (line 6) to new hash
+  - Use hash for powershell-X.X.X-linux-x64.tar.gz
+4. Add info in the <CHANGES> section (line 15) simliar to previous changes
+
+### Known PowerShell Issues With Linux That Might Impact You
+- There is a known issue where PowerShell converts STDOUT to a string instead of leaving it as a byte stream, this means commands like the following do NOT working currently:
+```
+btrfs send -p $PreviousSnapshot $CurrentSnapshot | btrfs receive $DestinationDirectory
+```
+See: https://github.com/PowerShell/PowerShell/issues/1908
