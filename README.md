@@ -2,7 +2,7 @@
 This is an Unraid plugin for Microsoft PowerShell (https://github.com/PowerShell/PowerShell).
 
 
-The install is performed, basically, as described here: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux
+The install is performed, basically, as described [here](https://learn.microsoft.com/en-us/powershell/scripting/install/install-other-linux?view=powershell-7.4#installation-using-a-binary-archive-file).
 
 It probably needs some improvement.
 
