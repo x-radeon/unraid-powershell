@@ -13,8 +13,8 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.9.2" support="https://forums.unraid.net/topic/135932-plugin-powershell/">
 
 <CHANGES>
-###2023-12-03
-- PowerShell Version 7.4.0 (https://github.com/PowerShell/PowerShell/releases/tag/v7.4.1)
+###2024-02-19
+- PowerShell Version 7.4.1 (https://github.com/PowerShell/PowerShell/releases/tag/v7.4.1)
 
 ###2023-12-03
 - PowerShell Version 7.4.0 (https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0)
