@@ -20,11 +20,3 @@ pwsh /boot/config/plugins/myscripts/script.ps1
 3. Update SHA256 hash (line 6) to new hash
   - Use hash for powershell-X.X.X-linux-x64.tar.gz
 4. Add info in the <CHANGES> section (line 15) simliar to previous changes
-
-## This has been resolved:
-### Known PowerShell Issues With Linux That Might Impact You
-- There is a known issue where PowerShell converts STDOUT to a string instead of leaving it as a byte stream, this means commands like the following do NOT work currently:
-```
-btrfs send -p $PreviousSnapshot $CurrentSnapshot | btrfs receive $DestinationDirectory
-```
-See: https://github.com/PowerShell/PowerShell/issues/1908
