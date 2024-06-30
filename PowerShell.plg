@@ -3,7 +3,7 @@
 <!ENTITY name      "PowerShell">
 <!ENTITY author    "x-radeon">
 <!ENTITY version   "7.4.3">
-<!ENTITY sha256    "3ae8f3a556fd7e14fecefaacf15f5cfb0afab520b6f1aeae796d2eeafc9b6422">
+<!ENTITY sha256    "5cfcc228afd3ffce536ec4541abafe97c629afcd6dc85c9a20712894bbf65adb">
 <!ENTITY launch    "Settings/&name;">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
 <!ENTITY plugin    "/boot/config/plugins/&name;">
@@ -14,9 +14,6 @@
 
 <CHANGES>
 ###2024-06-30
-- PowerShell Version 7.4.3 (https://github.com/PowerShell/PowerShell/releases/tag/v7.4.3)
-
-###2024-04-28
 - PowerShell Version 7.4.3 (https://github.com/PowerShell/PowerShell/releases/tag/v7.4.3)
 
 ###2024-04-28
