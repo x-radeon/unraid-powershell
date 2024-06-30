@@ -2,8 +2,8 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "PowerShell">
 <!ENTITY author    "x-radeon">
-<!ENTITY version   "7.4.2">
-<!ENTITY sha256    "36605DC37979DE5AF2E10783BF70C0AD8150521E81E6D7C9322036EBB897E7FE">
+<!ENTITY version   "7.4.3">
+<!ENTITY sha256    "3ae8f3a556fd7e14fecefaacf15f5cfb0afab520b6f1aeae796d2eeafc9b6422">
 <!ENTITY launch    "Settings/&name;">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
 <!ENTITY plugin    "/boot/config/plugins/&name;">
@@ -13,22 +13,19 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.9.2" support="https://forums.unraid.net/topic/135932-plugin-powershell/">
 
 <CHANGES>
+###2024-06-30
+- PowerShell Version 7.4.3 (https://github.com/PowerShell/PowerShell/releases/tag/v7.4.3)
+
 ###2024-04-28
 - PowerShell Version 7.4.2 (https://github.com/PowerShell/PowerShell/releases/tag/v7.4.2)
 
 ###2024-02-19
 - PowerShell Version 7.4.1 (https://github.com/PowerShell/PowerShell/releases/tag/v7.4.1)
 
-###2023-12-03
-- PowerShell Version 7.4.0 (https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0)
-
-###2023-06-04
-- PowerShell Version 7.3.4 (https://github.com/PowerShell/PowerShell/releases/tag/v7.3.4)
+###Older updates removed
 
 ###2023-03-05
 - Added Unraid community support URL https://forums.unraid.net/topic/135932-plugin-powershell/
-
-###Older updates removed
 
 </CHANGES>
 
