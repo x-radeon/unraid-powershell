@@ -45,8 +45,6 @@ pluginDir=&plugin;
 pwshVersion=&version;
 thisSHA256=&sha256;
 
-set -e
-
 # 
 # Set up variables
 # 
