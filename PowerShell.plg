@@ -82,7 +82,7 @@ if [ $checksumverified == true ] ; then
   #
   # Find any powershell scripts that have been added in here and run them
   #
-  pwshFiles=$(find "${pluginDir}" -type f -name '*.ps1' -print | sort)
+  pwshFiles=$(find "/boot/config/plugins/my_startup_scripts" -type f -name '*.ps1' -print | sort)
   for pwshFile in $pwshFiles; do
     echo "Running $pwshFile"
     pwsh "$pwshFile"
