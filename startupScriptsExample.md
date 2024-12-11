@@ -2,7 +2,7 @@
 
 # Retrieve unraid keyfile from an Azure Keyvault
 
-For example, this set of files (all in `/boot/config/plugins/PowerShell/`) will 
+For example, this set of files (all in `/boot/config/plugins/my_startup_scripts/`) will 
 * install some modules for Azure Keyvault manipulation
 * retrieve the value for /root/keyfile from the KV and write it
 
