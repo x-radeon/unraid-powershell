@@ -24,7 +24,7 @@ pwsh /boot/config/plugins/myscripts/script.ps1
 
 ## Automatically Run scripts on startup/install
 
-If you place any ps1 files into the plugin folder (`/boot/config/plugins/PowerShell`), then they will be executed once the plugin install has been done. 
+If you place any ps1 files into the plugin folder (`/boot/config/plugins/my_startup_scripts`), then they will be executed once the plugin install has been done. 
 
 See [here](./startupScriptsExample.md) for an example
 
