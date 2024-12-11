@@ -34,34 +34,61 @@
 
 <FILE Run="/bin/bash">
 <INLINE>
+# 
+# Set up variables
+# 
 checksumverified=false
+pluginDir=&plugin;
+pwshVersion=&version;
+thisSHA256=&sha256;
+
+# 
+# Set up variables
+# 
+pwshDownloadFilename="powershell-${pwshVersion}-linux-x64.tar.gz"
+pwshDownloadPath="${pluginDir}/${pwshDownloadFilename}"
+pwshDownloadBase="https://github.com/PowerShell/PowerShell/releases/download/v${pwshVersion}"
+pwshDownloadURL="${pwshDownloadBase}/${pwshDownloadFilename}"
+pwshDownloadOutputSHA256="${thisSHA256}  ${pwshDownloadPath}"
+pwshInstallDir="/opt/microsoft/powershell/${pwshVersion}"
+pwshExecutable="${pwshInstallDir}/pwsh"
+pwshExecutableBin="/usr/bin/pwsh"
+
 echo "Removing Old Install"
-rm -rf /usr/bin/pwsh /opt/microsoft/powershell
-find /boot/config/plugins/PowerShell -type f -regex '.*powershell-.*-linux-x64.tar.gz' ! -iname powershell-&version;-linux-x64.tar.gz -delete
-echo "Creating Directory"
-mkdir -p /opt/microsoft/powershell/7
-if [ ! -d /boot/config/plugins/PowerShell ]
-then
-  mkdir -p /boot/config/plugins/&name;
-fi
-if echo "&sha256;  /boot/config/plugins/PowerShell/powershell-&version;-linux-x64.tar.gz" | sha256sum -c
-then
+rm -rf "$pwshExecutableBin" $(dirname "${pwshInstallDir}")
+find "${pluginDir}" -type f -regex '.*powershell-.*-linux-x64.tar.gz' ! -iname $pwshDownloadFilename -delete
+
+echo "Creating Directories (if they don't exist)"
+mkdir -p "${pwshInstallDir}" "${pluginDir}"
+
+if echo "$pwshDownloadOutputSHA256" | sha256sum -c; then
   echo "Using already downloaded file"
   checksumverified=true
 else
-  echo "Need to download PowerShell. Downloading Source https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz"
-  curl -L -o &plugin;/powershell-&version;-linux-x64.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v&version;/powershell-&version;-linux-x64.tar.gz
-  if echo "&sha256;  /boot/config/plugins/PowerShell/powershell-&version;-linux-x64.tar.gz" | sha256sum -c ; then checksumverified=true ; fi
+  echo "Need to download PowerShell. Downloading Source $pwshDownloadURL"
+  curl -L -o $pwshDownloadPath $pwshDownloadURL
+  if echo "$pwshDownloadOutputSHA256" | sha256sum -c ; then checksumverified=true ; fi
 fi
+
 if [ $checksumverified == true ] ; then
   echo "Untar files"
-  tar zxf &plugin;/powershell-&version;-linux-x64.tar.gz -C /opt/microsoft/powershell/7
+  tar zxf "${pwshDownloadPath}" -C $pwshInstallDir
   echo "Set execute permissions"
-  chmod +x /opt/microsoft/powershell/7/pwsh
+  chmod +x $pwshExecutable
   echo "Create the symbolic link that points to pwsh"
-  ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
-  echo "Finished"
+  ln -s "${pwshExecutable}" "${pwshExecutableBin}"
+  echo "Finished Install"
+  
+  #
+  # Find any powershell scripts that have been added in here and run them
+  #
+  pwshFiles=$(find "${pluginDir}" -type f -name '*.ps1' -print | sort)
+  for pwshFile in $pwshFiles; do
+    echo "Running $pwshFile"
+    pwsh "$pwshFile"
+  done
 else
+  echo "${pwshDownloadPath}"
   echo "Failed to verify checksum!!!"
 fi
 </INLINE>
