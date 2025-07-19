@@ -2,8 +2,8 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "PowerShell">
 <!ENTITY author    "x-radeon">
-<!ENTITY version   "7.5.1">
-<!ENTITY sha256    "BB9B5F7F8060007354D75DA92FC6430C77BA074CF81BFA2156F1BA373FF477E5">
+<!ENTITY version   "7.5.2">
+<!ENTITY sha256    "8FA9584F6F95D29CA1466C4397AC39C371373D6581C12DFAE9EBD53C06D77664">
 <!ENTITY launch    "Settings/&name;">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
 <!ENTITY plugin    "/boot/config/plugins/&name;">
@@ -13,6 +13,9 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.9.2" support="https://forums.unraid.net/topic/135932-plugin-powershell/">
 
 <CHANGES>
+###2025-07-19
+- PowerShell Version 7.5.2 (https://github.com/PowerShell/PowerShell/releases/tag/v7.5.2)
+
 ###2025-05-17
 - PowerShell Version 7.5.1 (https://github.com/PowerShell/PowerShell/releases/tag/v7.5.1)
 
